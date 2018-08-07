@@ -3,10 +3,13 @@ Dynamic Routing Between Capsules
 https://arxiv.org/abs/1710.09829
 
 PyTorch implementation by Kenta Iwasaki @ Gram.AI.
+
+Qin's version
+
+Test
 """
 import sys
 sys.setrecursionlimit(15000)
-
 import torch
 import torch.nn.functional as F
 from torch import nn
@@ -148,7 +151,9 @@ if __name__ == "__main__":
 
     model = CapsuleNet()
     # model.load_state_dict(torch.load('epochs/epoch_327.pt'))
-    model.cuda()
+
+    # model.cuda()
+    model.cpu()
 
     print("# parameters:", sum(param.numel() for param in model.parameters()))
 

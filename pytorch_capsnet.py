@@ -17,15 +17,15 @@ class Mnist:
             transforms.Normalize((0.1307,), (0.3081,))
         ])
 
-        train_dataset = datasets.MNIST('../data', train=True, download=True, transform=dataset_transform)
-        test_dataset = datasets.MNIST('../data', train=False, download=True, transform=dataset_transform)
+        train_dataset = datasets.CIFAR10('./data', train=True, download=True, transform=dataset_transform)
+        test_dataset = datasets.CIFAR10('./data', train=False, download=True, transform=dataset_transform)
 
         self.train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
         self.test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=batch_size, shuffle=True)
 
 
 class ConvLayer(nn.Module):
-    def __init__(self, in_channels=1, out_channels=256, kernel_size=9):
+    def __init__(self, in_channels=3, out_channels=256, kernel_size=9):
         super(ConvLayer, self).__init__()
 
         self.conv = nn.Conv2d(in_channels=in_channels,
